@@ -30,10 +30,10 @@ Adhearsion.config do |config|
   ##
   # Use with Asterisk
   #
-  # config.punchblock.platform = :asterisk # Use Asterisk
-  # config.punchblock.username = "" # Your AMI username
-  # config.punchblock.password = "" # Your AMI password
-  # config.punchblock.host = "127.0.0.1" # Your AMI host
+  config.punchblock.platform = :asterisk # Use Asterisk
+  config.punchblock.username = "adhearsion" # Your AMI username
+  config.punchblock.password = "ahn123" # Your AMI password
+  config.punchblock.host = "127.0.0.1" # Your AMI host
 
   ##
   # Use with FreeSWITCH
@@ -65,5 +65,5 @@ Adhearsion.router do
   # Specify your call routes, directing calls with particular attributes to a controller
   #
 
-  route 'default', SimonGame
+  route 'default', DemoController
 end
