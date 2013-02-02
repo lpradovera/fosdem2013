@@ -16,6 +16,14 @@
         .ralign
           %a{href: "/events", class: "btn btn-info"}
             Launch demo
+    %li.span3
+      .thumbnail
+        %h4 Information
+        %p.fixedtn You will need a SIP client configured to connect to your Asterisk server as SIP/100 and one as SIP/200 to fully use the demo. After configuring your clients, just try dialing 123 or 456. For the PIN demo, the PIN is 1234.
 :javascript
   $(function() {
+    $('#c2c').click(function(e){
+      $.ajax('http://localhost:8080/dial')
+      e.preventDefault();
+    });
   });
