@@ -1,10 +1,12 @@
+require 'reel'
+require 'reel/app'
+
 class RequestHandler
-  def self.handle(request)
-    if request.url == "/dial" && request.method == "GET"
-      Adhearsion::OutboundCall.originate "SIP/100"  do
-        invoke ConnectingController
-      end
+  include Reel::App
+  get('/dial') do
+    Adhearsion::OutboundCall.originate "SIP/100"  do
+      invoke ConnectingController
     end
-    [:ok, "200 OK"]
+    [200, {}, "200 OK"]
   end
 end
