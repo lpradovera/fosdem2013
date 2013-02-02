@@ -1,0 +1,20 @@
+!!! 5
+%html
+  %head
+    %title Adhearsion Demo at FOSDEM 2013
+    %script{:src => "/js/jquery-1.7.2.min.js"}
+    %script{:src => "http://localhost:3000/faye/faye.js"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/bootstrap.min.css"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/app.css"}
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a{href: "/", class: "brand"}
+            %img{src: "img/ahn_logo.png"}
+          %a{href: "https://fosdem.org/2013/", class: "pull-right", style: "padding-top: 11px;"}
+            %img{src: "img/logo.png", style: "width: 55px;" }
+    .container
+      = yield
+

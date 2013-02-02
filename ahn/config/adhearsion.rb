@@ -35,6 +35,8 @@ Adhearsion.config do |config|
   config.punchblock.password = "ahn123" # Your AMI password
   config.punchblock.host = "127.0.0.1" # Your AMI host
 
+  config.virginia.handler = RequestHandler
+
   ##
   # Use with FreeSWITCH
   #
@@ -43,27 +45,12 @@ Adhearsion.config do |config|
   # config.punchblock.host = "127.0.0.1" # Your IES host
 end
 
-Adhearsion::Events.draw do
-
-  # Register global handlers for events
-  #
-  # eg. Handling Punchblock events
-  # punchblock do |event|
-  #   ...
-  # end
-  #
-  # eg Handling PeerStatus AMI events
-  # ami :name => 'PeerStatus' do |event|
-  #   ...
-  # end
-  #
-end
-
 Adhearsion.router do
 
   #
   # Specify your call routes, directing calls with particular attributes to a controller
   #
 
+  route 'auth', AuthController, to: /456/
   route 'default', DemoController
 end

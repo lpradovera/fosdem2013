@@ -1,0 +1,28 @@
+.container
+  %h2 Events pushed to the browser with Faye
+  .row
+    #term.span12.console
+  .row.ralign{style: "margin-top: 10px;"}
+    %a{href: "#", id: "clearbtn", class: "btn btn-danger"} Clear
+
+:javascript
+  $(function() {
+    var client = new Faye.Client('http://localhost:3000/faye');
+
+    sub = client.subscribe('/messages', function(message) {
+     $('#term').append('<div class="logmsg">' + htmlEntities(message.text) + '</div>');
+      $('#term').animate({scrollTop: $('#term').prop("scrollHeight")}, 500);
+    });
+
+    $('#clearbtn').click(function() {
+      $('#term').html('')
+    });
+  });
+
+  sub.callback(function() {
+    alert('Subscription is now active!');
+  });
+
+  function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }

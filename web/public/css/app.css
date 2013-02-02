@@ -1,0 +1,21 @@
+body {
+  padding-top: 80px;
+}
+.fixedtn {
+  height: 100px;
+}
+.ralign {
+  text-align: right;
+}
+.console {
+  font-family:Courier;
+  font-weight: bold;
+  color: #fff;
+  background: #333;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  height: 400px;
+  overflow: auto;
+}
