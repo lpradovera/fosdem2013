@@ -9,8 +9,7 @@ gem "haml"
 gem "faye"
 gem "json"
 gem "faraday"
-gem "virginia", path: "/Users/luca/projects/virginia"
-
+gem "virginia", git: "git://github.com/polysics/virginia.git"
 group :development, :test do
   gem 'rspec'
 end
