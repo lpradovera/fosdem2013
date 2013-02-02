@@ -1,6 +1,6 @@
-# Welcome to Adhearsion
+# FOSDEM 2013 Adhearsion demo
 
-You've got a fresh app and you're almost ready to get started. Firstly, you'll need to configure your VoIP platform:
+Clone the repo and let's get started! Firstly, you'll need to configure your VoIP platform:
 
 ## Asterisk
 
@@ -13,41 +13,22 @@ exten => _.,1,AGI(agi:async)
 
 and setup a user in `manager.conf` with read/write access to `all`.
 
-If you are using Asterisk 1.8, you will need to add an additional context with the name `adhearsion-redirect`. On Asterisk 10 and above this is auto-provisioned.
+If you are using Asterisk 1.8, you will need to add an additional empty context with the name `adhearsion-redirect`. On Asterisk 10 and above this is auto-provisioned.
 
-## FreeSWITCH
+## Starting the app
+Use "bundle install" then "foreman start" to get everything running.
 
-* Ensure that mod_event_socket is installed, and configure it in autoload_configs/event_socket.conf.xml to taste
-* Add an extension to your dialplan like so:
+The application starts an Adhearsion process with an embedded Reel server on port 8080, and a Sinatra support app on port 8989.
 
-```xml
-<extension name='Adhearsion'>
-  <condition field="destination_number" expression="^10$">
-    <action application='park'/>
-  </condition>
-</extension>
-```
+Go to http://localhost:8989 to see the home page for the demos.
 
-## Voxeo PRISM
+You will need a SIP client configured to connect to your Asterisk server as SIP/100 and one as SIP/200 to fully use the demo.
 
-Install the [rayo-server](https://github.com/rayo/rayo-server) app into PRISM 11 and follow the [configuration guide](https://github.com/rayo/rayo-server/wiki/Single-node-and-cluster-configuration-reference).
+After configuring your clients, just try dialing 123 or 456.
 
-## Configure your app
+For the PIN demo, the PIN is 1234.
 
-In `config/adhearsion.rb` you'll need to set the VoIP platform you're using, along with the correct credentials. You'll find example config there, so follow the comments.
-
-## Ready, set, go!
-
-Start your new app with "ahn start". You'll get a lovely console and should be presented with the SimonGame when you call in.
-
-### Running your app on heroku
-
-In order to run an adhearsion application on Heroku, you must create the application on the 'cedar' stack (`heroku apps:create --stack cedar`) and re-scale your processes like so:
-
-```
-heroku ps:scale web=0
-heroku ps:scale ahn=1
-```
+## Cool! Tell me more!
 
 More detail is available in the [deployment documentation](http://adhearsion.com/docs/best-practices/deployment).
 
